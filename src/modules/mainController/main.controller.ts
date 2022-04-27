@@ -3,17 +3,20 @@ import { MainService } from "./main.service";
 
 export class MainController {
   constructor(private mainService = new MainService()) {}
-  getRampas(req: Request, res: Response) {
-    const rampas = [
-      {
-        title:"GV",
-         dificulty:1
-      },
-      {title:"moedão", dificulty:3}
-    ]
-    
-    // const rampas = this.mainService.getRampas();
-    console.log(rampas)
+
+  async getRampas(req: Request, res: Response) {
+    const rampas = await this.mainService.getRampas();
+    console.log(rampas);
     res.render("index", { rampas });
+  }
+
+  async createRampa(req: any, res: Response) {
+    const response = await this.mainService.createRampa(req.body);
+    console.log(response);
+  }
+
+  async deleteRampa(req: Request, res: Response) {
+    const response = await this.mainService.deleteRampa(req.body);
+    console.log(response);
   }
 }

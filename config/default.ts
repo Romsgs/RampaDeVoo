@@ -1,4 +1,7 @@
+import 'dotenv/config' 
+import express from 'express'
 export default {
-  PORT: 3333,
-  HOST: "http://localhost:"
+  PORT: process.env.PORT,
+  HOST: process.env.HOST
 }
+

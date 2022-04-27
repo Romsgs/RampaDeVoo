@@ -1,21 +1,35 @@
-import { PrismaClient } from "@prisma/client";
-import { createRampaDto } from "./dto";
+//importação do controller de repositorio
+import { MainRepository } from "./main.repository";
+//importação das DTOS
+import { createRampaDto, idAlvoDelete } from "./dto";
 export class MainService {
-  constructor(private prisma = new PrismaClient()) {}
+  constructor(private mainRepository = new MainRepository()) {}
 
   async getRampas() {
-    const rampas = await this.prisma.rampa.findMany();
+    try {
+      const rampas = await this.mainRepository.getRampas();
+      return rampas;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async createRampa(createRampaDto: createRampaDto) {
-    const res = await this.prisma.rampa.create({
-      data: {
-        title: createRampaDto.title,
-        dificulty: createRampaDto.dificulty,
-        official: createRampaDto.official,
-        verified: createRampaDto.verified,
-        pathToFiles: createRampaDto.pathToFiles,
-      },
-    });
+    try {
+      console.log("entrou no service");
+      const res = await this.mainRepository.createRampa(createRampaDto);
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async deleteRampa(idDto: idAlvoDelete) {
+    try {
+      const res = await this.mainRepository.deleteRampa(idDto);
+      console.log(res)
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
