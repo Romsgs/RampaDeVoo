@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/mainStyle.css">
+  <title>Rampas de Voo Livre</title>
+</head>
+
+<body>
+  <header>
+    <div id="topHeader">
+      <img src="../../public/site/assets/logo.png" alt="">
+      <div id="title"></div>
+      <div id="userArea"></div>
+    </div>
+    <div id="bottomHeader">
+      <form>
+        <select>
+          <% for(let rampa of rampas) { %>
+            <option value="<%- rampa.title %>"> <%= rampa.title %></option>
+          <% } %>
+        </select>
+      </form>
+      <button type="submit">OK</button>
+    </div>
+  </header>
+  <main>
+    <article>
+      <h3>Bem vindo!</h3>
+      <p> Rampa de Voo Livre é uma plataforma de interação virtual</br>Aqui, você poderá ver a localização, condições
+        meteorológicas entre outras informações das rampas de voo livre pelo brasil e pelo mundo!</br>E poderá também
+        enviar fotos e videos das suas aventuras e muito mais! aproveite</p>
+    </article>
+  </main>
+  <footer>
+    <p>Rampa de Voo Livre © 2022</p>
+  </footer>
+</body>
+
+</html>
