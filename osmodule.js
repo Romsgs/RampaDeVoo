@@ -1,0 +1,7 @@
+const os = require('os')
+console.log(os.type())
+console.log(os.arch())
+console.table(os.networkInterfaces().lo[0])
+console.log(os.homedir())
+console.log(os.hostname())
+console.log(os.uptime())
